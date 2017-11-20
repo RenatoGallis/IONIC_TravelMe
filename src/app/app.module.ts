@@ -5,25 +5,42 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-
+import { AddPage } from '../pages/add/add';
+import { AddroutPage } from '../pages/addrout/addrout';
+import { ListaroutPage } from '../pages/listarout/listarout';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+/* LocalStorage */
+import { LocalStorageModule } from 'angular-2-local-storage';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    AddPage,
+    AddroutPage,
+    ListaroutPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+
+    LocalStorageModule.withConfig({
+  prefix: 'NyApp',
+  storageType: 'localStorage'
+})
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    AddPage,
+    AddroutPage,
+    ListaroutPage
   ],
   providers: [
     StatusBar,

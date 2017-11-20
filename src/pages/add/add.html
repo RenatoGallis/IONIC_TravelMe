@@ -1,0 +1,41 @@
+<!--
+  Generated template for the AddPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+  <button>
+  </button>
+    <ion-title>adicionar viagem</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+  <ion-label stacked>Nome</ion-label>
+  <ion-input type="text" [(ngModel)]="destino.nome" required placeholder="Digite o Local"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label stacked>Data Inicio</ion-label>
+  <div class="input-group-addon"><span class="glyphicon glyphicon-time"></span></div>
+  <ion-input type="date" [(ngModel)]="destino.data_inicio"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label stacked>Data Fim</ion-label>
+  <div class="input-group-addon"><span class="glyphicon glyphicon-time"></span></div>
+  <ion-input type="date" [(ngModel)]="destino.data_final"></ion-input>
+</ion-item>
+  </ion-list>
+
+
+<button ion-button round (click)="save();">Salvar destino</button>
+</ion-content>

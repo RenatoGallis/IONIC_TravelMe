@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Destino } from '../../models/destino';
+import { AddPage } from '../add/add';
+import { ListaroutPage } from '../listarout/listarout';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
   selector: 'page-list',
@@ -11,13 +14,44 @@ export class ListPage {
     destinos : Destino[];
   //items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams , private localStorageService: LocalStorageService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
-    // Let's populate this page with some filler content for funzies
-    this.destinos = [new Destino(1,  "ios-plane", "Roma", new Date("2016-10-01T03:00:00-03:00"),new Date("2016-10-01T03:00:00-03:00")),
-                        new Destino(2,  "ios-plane", "Jalapao", new Date("2016-11-01T03:00:00-03:00"),new Date("2016-11-01T03:00:00-03:00")),
-                        new Destino(3,  "ios-plane", "Japão", new Date("2016-10-20T03:00:00-03:00"),new Date("2016-10-20T03:00:00-03:00"))];
+    this.destinos = [];
+            if (this.localStorageService.get("destinos") != null)
+            {
+                let jsonObjectArray = JSON.parse(<string>this.localStorageService.get("destinos"));
+                for (let jsonObject of jsonObjectArray)
+                {
+                  //jsonObject.icone = "ios-plane";
+                  this.destinos.push(new Destino(jsonObject.id, jsonObject.icone, jsonObject.nome, new Date(jsonObject.data_inicio),new Date(jsonObject.data_final)));
+                }
+            }
+
   }
+
+
+  add() {
+    this.navCtrl.push(AddPage);
+  }
+
+listaroteiro() {
+    this.navCtrl.push(ListaroutPage);
+  }
+
+
+  del(id){
+  for (var i=0; i < this.destinos.length; i++)
+  {
+    if (this.destinos[i].id == id)
+    {
+      this.destinos.splice(i, 1);
+    }
+  }
+      this.localStorageService.set("destino", JSON.stringify(this.destinos));
+}
+
+
+
 }
