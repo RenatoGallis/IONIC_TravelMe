@@ -14,7 +14,15 @@
 
 
 <ion-content padding>
+
 <ion-list>
+  <ion-item *ngFor="let roteiro of roteiros">
+    <ion-icon name="{{roteiro.icone}}" item-left large ></ion-icon>
+      <h2>{{roteiro.local}}</h2>
+      <h2>{{roteiro.hora}}</h2>
+      <h2> <ion-note >{{roteiro.data | date: 'dd/MM/yyyy'}}</ion-note></h2>
+</ion-item>
+
 </ion-list>
 <ion-fab right bottom>
 <button ion-fab color="primary" (click)="add()">

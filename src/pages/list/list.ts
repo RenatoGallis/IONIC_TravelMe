@@ -36,8 +36,8 @@ export class ListPage {
     this.navCtrl.push(AddPage);
   }
 
-listaroteiro() {
-    this.navCtrl.push(ListaroutPage);
+listaroteiro(id) {
+    this.navCtrl.push(ListaroutPage,{destinoSelecionado: id});
   }
 
 
@@ -49,7 +49,8 @@ listaroteiro() {
       this.destinos.splice(i, 1);
     }
   }
-      this.localStorageService.set("destino", JSON.stringify(this.destinos));
+      this.localStorageService.set("destinos", JSON.stringify(this.destinos));
+
 }
 
 

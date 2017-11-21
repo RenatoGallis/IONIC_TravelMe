@@ -12,9 +12,9 @@
     <ion-item *ngFor="let destino of destinos">
 
       <ion-icon name="{{destino.icone}}" item-left large ></ion-icon>
-        <h2 (click)="listaroteiro()">{{destino.nome}}</h2>
-        <h2> <ion-note item-right (click)="listaroteiro()">{{destino.data_inicio | date: 'dd/MM/yyyy'}}</ion-note></h2>
-        <h2> <ion-note item-right (click)="listaroteiro()">{{destino.data_final | date: 'dd/MM/yyyy'}}</ion-note></h2>
+        <h2 (click)="listaroteiro(destino.id)">{{destino.nome}}</h2>
+        <h2> <ion-note item-right (click)="listaroteiro(destino.id)">{{destino.data_inicio | date: 'dd/MM/yyyy'}}</ion-note></h2>
+        <h2> <ion-note item-right (click)="listaroteiro(destino.id)">{{destino.data_final | date: 'dd/MM/yyyy'}}</ion-note></h2>
 
         <ion-icon name="trash" item-right (click)="del(destino.id)"></ion-icon>
       </ion-item>
@@ -26,6 +26,6 @@
 
   </ion-list>
   <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
+    {{selectedItem.id}}
   </div>
 </ion-content>
