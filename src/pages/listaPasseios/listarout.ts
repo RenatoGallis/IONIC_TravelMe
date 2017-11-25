@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AddroutPage } from '../addrout/addrout';
+import { AddroutPage } from '../addPasseios/addrout';
 import { Destino } from '../../models/destino';
 import { Roteiro } from '../../models/roteiro';
 import { LocalStorageService } from 'angular-2-local-storage';
@@ -22,22 +22,33 @@ export class ListaroutPage {
   public destinoId;
   public   roteiros : Roteiro[];
   constructor(public navCtrl: NavController, public navParams: NavParams, private localStorageService: LocalStorageService) {
-    this.destinoId =  this.navParams.get('destinoSelecionado');
+//this.destinoId =  this.navParams.get('destinoSelecionado');
+  //  this.roteiros = [];
 
-    this.roteiros = [];
-            if (this.localStorageService.get(this.destinoId) != null)
-            {
-                let jsonObjectArray = JSON.parse(<string>this.localStorageService.get(this.destinoId));
-                for (let jsonObject of jsonObjectArray)
-                {
-
-                  this.roteiros.push(new Roteiro(jsonObject.id, jsonObject.icone, jsonObject.local,jsonObject.hora, new Date(jsonObject.data)));
-                }
-            }
   }
 
+  load(){
+    this.destinoId =  this.navParams.get('destinoSelecionado');
+    this.roteiros = [];
+    if (this.localStorageService.get(this.destinoId) != null)
+     {
+         let jsonObjectArray = JSON.parse(<string>this.localStorageService.get(this.destinoId));
+         for (let jsonObject of jsonObjectArray)
+         {
+
+           this.roteiros.push(new Roteiro(jsonObject.id, jsonObject.icone, jsonObject.local,jsonObject.hora, new Date(jsonObject.data)));
+         }
+     }
+  }
+
+
   ionViewDidLoad() {
+  //  this.load();
     console.log('ionViewDidLoad ListaroutPage');
+  }
+
+  ionViewWillEnter(){
+    this.load();
   }
 
   add(){

@@ -4,10 +4,10 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { AddPage } from '../pages/add/add';
-import { AddroutPage } from '../pages/addrout/addrout';
-import { ListaroutPage } from '../pages/listarout/listarout';
+import { ListPage } from '../pages/listaViagens/list';
+import { AddPage } from '../pages/addViagem/add';
+import { AddroutPage } from '../pages/addPasseios/addrout';
+import { ListaroutPage } from '../pages/listaPasseios/listarout';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 /* LocalStorage */

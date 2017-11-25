@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Destino } from '../../models/destino';
-import { AddPage } from '../add/add';
-import { ListaroutPage } from '../listarout/listarout';
+import { AddPage } from '../addViagem/add';
+import { ListaroutPage } from '../listaPasseios/listarout';
 import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({

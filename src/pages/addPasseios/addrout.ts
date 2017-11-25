@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Roteiro } from '../../models/roteiro';
 import { Destino } from '../../models/destino';
-import { ListaroutPage } from '../listarout/listarout';
+import { ListaroutPage } from '../listaPasseios/listarout';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { ListPage } from '../list/list';
+import { ListPage } from '../listaViagens/list';
 
 /**
  * Generated class for the AddroutPage page.
@@ -33,8 +33,11 @@ export class AddroutPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddroutPage');
+    console.log('ionVixewDidLoad AddroutPage');
+
   }
+
+
 
 
   saverout(){
@@ -53,8 +56,8 @@ export class AddroutPage {
 
         this.roteiros.push(this.roteiro);
         this.localStorageService.set(this.destinoId, JSON.stringify(this.roteiros));
-        this.navCtrl.setRoot(ListaroutPage);
-
+        //this.navCtrl.setRoot(ListaroutPage ,{destinoSelecionado: this.destinoId});
+        this.navCtrl.pop();
   }
 
 }

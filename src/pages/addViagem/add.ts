@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Destino } from '../../models/destino';
-import { ListPage } from '../list/list';
+import { ListPage } from '../listaViagens/list';
 
 import { LocalStorageService } from 'angular-2-local-storage';
 
