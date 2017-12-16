@@ -4,14 +4,14 @@ export class Roteiro {
   icone: string;
   local: string;
   hora: string;
-  data: Date;
+  data: string = new Date().toISOString();
 
   constructor(
   id: number,
   icone: string,
   local: string,
   hora: string,
-  data: Date)
+  data: string = new Date().toISOString())
   {
     this.id = id;
     this.icone = icone;

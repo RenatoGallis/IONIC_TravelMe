@@ -4,15 +4,15 @@ export class Destino {
   id: number;
   icone: string;
   nome: string;
-  data_inicio: Date;
-  data_final: Date;
+  data_inicio: string= new Date().toISOString();
+  data_final: string= new Date().toISOString();
 
   constructor(
   id: number,
   icone: string,
   nome: string,
-  data_inicio: Date,
-  data_final: Date)
+  data_inicio: string= new Date().toISOString(),
+  data_final: string= new Date().toISOString())
   {
     this.id = id;
     this.icone = icone;

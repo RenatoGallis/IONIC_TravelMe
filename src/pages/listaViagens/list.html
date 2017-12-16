@@ -12,11 +12,15 @@
     <ion-item *ngFor="let destino of destinos">
 
       <ion-icon name="{{destino.icone}}" item-left large ></ion-icon>
-        <h2 (click)="listaroteiro(destino.id)">{{destino.nome}}</h2>
-        <h2> <ion-note item-right (click)="listaroteiro(destino.id)">{{destino.data_inicio | date: 'dd/MM/yyyy'}}</ion-note></h2>
-        <h2> <ion-note item-right (click)="listaroteiro(destino.id)">{{destino.data_final | date: 'dd/MM/yyyy'}}</ion-note></h2>
+        <h2 (click)="listaroteiro(destino)">{{destino.nome}}</h2>
+        <h2> <ion-note item-right (click)="listaroteiro(destino)">{{destino.data_inicio | date: 'dd/MM/yyyy'}}</ion-note></h2>
+        <h2> <ion-note item-right (click)="listaroteiro(destino)">{{destino.data_final | date: 'dd/MM/yyyy'}}</ion-note></h2>
 
+<!--     <ion-icon name="redo" item-right (click)="alterar(destino.id,destino.nome,destino.data_inicio,destino.data_final)"></ion-icon>
+-->
+        <ion-icon name="brush" item-right (click)="alterar(destino)"></ion-icon>
         <ion-icon name="trash" item-right (click)="del(destino.id)"></ion-icon>
+
       </ion-item>
       <ion-fab right bottom>
 <button ion-fab color="primary" (click)="add()">

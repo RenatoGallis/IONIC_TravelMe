@@ -18,12 +18,19 @@
     <ion-label stacked>Local</ion-label>
     <ion-input type="text" [(ngModel)]="roteiro.local" required placeholder="Digite o Local"></ion-input>
     </ion-item>
-
+<!--
     <ion-item>
     <ion-label stacked>Data</ion-label>
     <div class="input-group-addon"><span class="glyphicon glyphicon-time"></span></div>
     <ion-input type="date" [(ngModel)]="roteiro.data"></ion-input>
     </ion-item>
+-->
+
+<ion-item  (click)="selecionaDataPasseio();" >
+  <ion-label stacked>Data Do Passeio</ion-label>
+  <ion-datetime name="data" type="text" [min]="formataDataIncio" [max]="formataDataFim" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="roteiro.data" placeholder="DD/MM/YYYY"></ion-datetime>
+</ion-item>
+
 
     <ion-item>
     <ion-label stacked>hora</ion-label>

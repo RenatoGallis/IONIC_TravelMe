@@ -25,7 +25,7 @@ export class ListPage {
                 for (let jsonObject of jsonObjectArray)
                 {
                   //jsonObject.icone = "ios-plane";
-                  this.destinos.push(new Destino(jsonObject.id, jsonObject.icone, jsonObject.nome, new Date(jsonObject.data_inicio),new Date(jsonObject.data_final)));
+                  this.destinos.push(new Destino(jsonObject.id, jsonObject.icone, jsonObject.nome, jsonObject.data_inicio,jsonObject.data_final));
                 }
             }
 
@@ -36,8 +36,8 @@ export class ListPage {
     this.navCtrl.push(AddPage);
   }
 
-listaroteiro(id) {
-    this.navCtrl.push(ListaroutPage,{destinoSelecionado: id});
+listaroteiro(destino) {
+    this.navCtrl.push(ListaroutPage,{destinoSelecionado: destino});
   }
 
 
@@ -51,6 +51,12 @@ listaroteiro(id) {
   }
       this.localStorageService.set("destinos", JSON.stringify(this.destinos));
 
+}
+
+alterar(destino){
+console.log(destino.nome);
+//this.navCtrl.push(EditarViagemPage,{idViagem: destino.id,nomeViagem: destino.nome,dataInicioViagem: destino.data_inicio, dataFimViagem: destino.data_final});
+this.navCtrl.push(AddPage,{infoDestino: destino});
 }
 
 

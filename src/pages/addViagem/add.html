@@ -6,9 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-  <button>
-  </button>
+    <ion-navbar class="bar-positive">
+
     <ion-title>adicionar viagem</ion-title>
   </ion-navbar>
 
@@ -22,19 +21,17 @@
   <ion-label stacked>Nome</ion-label>
   <ion-input type="text" [(ngModel)]="destino.nome" required placeholder="Digite o Local"></ion-input>
 </ion-item>
-
-<ion-item>
+<ion-item (click)="selecionaDataInicio();">
   <ion-label stacked>Data Inicio</ion-label>
-  <!--  <div class="input-group-addon"><span class="glyphicon glyphicon-time"></span></div> -->
-  <ion-input type="date" [(ngModel)]="destino.data_inicio"></ion-input>
+  <ion-datetime   name="data_inicio" type="text" min="2015-01-01" max="2022-12-31"displayFormat="DD/MM/YYYY"   pickerFormat="DD/MM/YYYY" [(ngModel)]="destino.data_inicio" placeholder="DD/MM/YYYY"></ion-datetime>
 </ion-item>
-
-<ion-item>
+<ion-item  (click)="selecionaDataFim();" >
   <ion-label stacked>Data Fim</ion-label>
-  <div class="input-group-addon"><span class="glyphicon glyphicon-time"></span></div>
-  <ion-input type="date" [(ngModel)]="destino.data_final"></ion-input>
+  <ion-datetime  min="2015-01-01" max="2022-12-31" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="destino.data_final" placeholder="DD/MM/YYYY"></ion-datetime>
 </ion-item>
-  </ion-list>
+<ion-item>
+</ion-item>
+</ion-list>
 
 
 <button ion-button round (click)="save();">Salvar destino</button>
