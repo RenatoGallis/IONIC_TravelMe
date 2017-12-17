@@ -8,12 +8,58 @@
 </ion-header>
 
 <ion-content padding>
-  <h3></h3>
+  <ion-grid name="tabela" align="center">
+  <ion-row name="linha1">
+    <ion-col>
+<img src="assets/imgs/calendario.png"> 
+       Planeje suas viagens
+    </ion-col>
+  </ion-row>
 
-  <p align='center'>
-    Planeje suas viagens construindo seu roteiro e organize seu histórico de vaigens!
+  <ion-row padding align="center">
+    <ion-col>
+      <img src="assets/imgs/livro.png">
+         Construa seu roteiro
+   </ion-col>
+  </ion-row>
+
+  <ion-row padding align="center">
+    <ion-col>
+      <img src="assets/imgs/ampulheta.png">
+        Organize seu histórico de vaigens!
+    </ion-col>
+  </ion-row>
+
+  <ion-row padding align="center">
+    <ion-col>
+      <img src="assets/imgs/ok.png">
+        Tenha suas viagens sempre em suas mãos!
+     </ion-col>
+  </ion-row>
+
+  <ion-row padding align="center">
+    <ion-col>
     Vamos começar?
-  </p>
+    </ion-col>
+  </ion-row>
+
+<!--
+    <ion-row padding align="center">
+      <ion-col>
+      <img src="assets/imgs/logo.jpg">
+      </ion-col>
+    </ion-row>
+
+  -->
+  <ion-row  padding align="center">
+    <ion-col>
+      <button ion-button round  center (click)="start();">Planeje sua viagem!!</button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+
 <!--  colocar uma foto de um aviao  no rodapé colocar os nossos nomes-->
-  <button ion-button round (click)="start();">Planeje sua viagem!!</button>
+
 </ion-content>

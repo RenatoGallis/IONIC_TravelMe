@@ -21,8 +21,11 @@
       <h2>{{roteiro.local}}</h2>
       <h2>{{roteiro.hora}}</h2>
       <h2> <ion-note >{{roteiro.data | date: 'dd/MM/yyyy'}}</ion-note></h2>
-      <ion-icon name="brush" item-right (click)="alterar(roteiro)"></ion-icon>
-      <ion-icon name="trash" item-right (click)="deletaPasseio(roteiro.id)"></ion-icon>
+
+
+      <img src="assets/imgs/alter.png" item-right (click)="alterar(roteiro)">
+      <img src="assets/imgs/trash.png" item-right (click)="deletaPasseio(roteiro.id)">
+
 </ion-item>
 
 </ion-list>

@@ -16,10 +16,11 @@
         <h2> <ion-note item-right (click)="listaroteiro(destino)">{{destino.data_inicio | date: 'dd/MM/yyyy'}}</ion-note></h2>
         <h2> <ion-note item-right (click)="listaroteiro(destino)">{{destino.data_final | date: 'dd/MM/yyyy'}}</ion-note></h2>
 
-<!--     <ion-icon name="redo" item-right (click)="alterar(destino.id,destino.nome,destino.data_inicio,destino.data_final)"></ion-icon>
--->
-        <ion-icon name="brush" item-right (click)="alterar(destino)"></ion-icon>
-        <ion-icon name="trash" item-right (click)="del(destino.id)"></ion-icon>
+
+        <img src="assets/imgs/alter.png" item-right (click)="alterar(destino)">
+       <!--  <ion-icon name="brush" item-right (click)="alterar(destino)"></ion-icon> -->
+       <img src="assets/imgs/trash.png" item-right (click)="del(destino.id)">
+       <!--  <ion-icon name="trash" item-right (click)="del(destino.id)"></ion-icon> -->
 
       </ion-item>
       <ion-fab right bottom>

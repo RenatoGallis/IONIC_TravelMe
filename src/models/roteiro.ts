@@ -10,7 +10,7 @@ export class Roteiro {
   id: number,
   icone: string,
   local: string,
-  hora: string,
+  hora: string = new Date().toISOString(),
   data: string = new Date().toISOString())
   {
     this.id = id;

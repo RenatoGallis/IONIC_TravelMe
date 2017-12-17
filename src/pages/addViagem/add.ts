@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,Alert } from 'ionic-angular';
 import { Destino } from '../../models/destino';
 import { ListPage } from '../listaViagens/list';
 import { DatePicker } from '@ionic-native/date-picker';
 import { LocalStorageService } from 'angular-2-local-storage';
+import { Vibration } from '@ionic-native/vibration';
 
 /**
  * Generated class for the AddPage page.
@@ -20,7 +21,9 @@ import { LocalStorageService } from 'angular-2-local-storage';
 export class AddPage {
    destino: Destino;
     destinos: Destino[];
-  constructor(public navCtrl: NavController, public navParams: NavParams , private localStorageService: LocalStorageService,private  datePicker:  DatePicker) {
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams , private localStorageService: LocalStorageService,private  datePicker:  DatePicker, private alertCtrl: AlertController,private vibration: Vibration) {
 if(this.navParams.get('infoDestino')!= null){
     this.destino =  this.navParams.get('infoDestino');
   }else{
@@ -28,12 +31,35 @@ if(this.navParams.get('infoDestino')!= null){
     }
   }
 
-  ionViewDidLoad() {
-  }
+  ionViewDidLoad() {}
 
   save() {
 
+
   this.destinos = [];
+
+  if(!this.destino.nome  || !this.destino.data_inicio || !this.destino.data_final){
+
+  this.vibration.vibrate([2000,1000,2000]);
+
+let alert = this.alertCtrl.create({
+        title:'Aviso',
+        message: "Por favor, preencha corretamente todos os campos",
+        buttons:[{text:'Ok'}]
+      });
+  alert.present();
+  return
+}
+
+if(this.destino.data_final < this.destino.data_inicio){
+  let alert_data = this.alertCtrl.create({
+          title:'Aviso',
+          message: "Data fim menor que a data inicio, isso é impossivel!!",
+          buttons:[{text:'Ok'}]
+        });
+    alert_data.present();
+    return
+}
 
       if (this.localStorageService.get("destinos") != null)
       {

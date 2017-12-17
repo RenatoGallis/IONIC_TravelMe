@@ -32,11 +32,13 @@
 </ion-item>
 
 
-    <ion-item>
+    <ion-item (click)="selecionaHoraPasseio();">
     <ion-label stacked>hora</ion-label>
-    <div class="input-group-addon"><span class="glyphicon glyphicon-time"></span></div>
-    <ion-input type="time" [(ngModel)]="roteiro.hora"></ion-input>
+    <ion-datetime type="time" displayFormat="HH:mm:a" pickerFormat="HH:mm"   [(ngModel)]="roteiro.hora" placeholder="hh:mm"></ion-datetime>
     </ion-item>
+    <ion-item>
+    </ion-item>
+
 
   </ion-list>
 

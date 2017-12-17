@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,Alert } from 'ionic-angular';
 import { Roteiro } from '../../models/roteiro';
 import { Destino } from '../../models/destino';
 import { ListaroutPage } from '../listaPasseios/listarout';
@@ -29,7 +29,8 @@ export class AddroutPage {
    public dia_fim;
    public mes_inicio;
    public mes_fim;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private localStorageService: LocalStorageService,private  datePicker:  DatePicker) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private localStorageService: LocalStorageService,private  datePicker:  DatePicker,private alertCtrl: AlertController) {
+
     if(this.navParams.get('infoRoteiro')!= null){
       this.destino =  this.navParams.get('destinoSelecionado');
       this.roteiro =  this.navParams.get('infoRoteiro');
@@ -52,8 +53,22 @@ console.log("Data Inicio:" + this.formataDataIncio +"Data Fim:" + this.formataDa
 
 
   saverout(){
-    this.roteiros = [];
-    this.roteiro.data = this.roteiro.data ;
+
+    if(!this.roteiro.local  || !this.roteiro.data || !this.roteiro.hora){
+    
+  let alert = this.alertCtrl.create({
+          title:'Aviso',
+          message: "Por favor, preencha corretamente todos os campos",
+          buttons:[{text:'Ok'}]
+
+        });
+    alert.present();
+    return
+  }
+
+
+this.roteiros = [];
+this.roteiro.data = this.roteiro.data ;
 
 
         if (this.localStorageService.get(this.destino.id) != null)
@@ -96,6 +111,26 @@ console.log("Data Inicio:" + this.formataDataIncio +"Data Fim:" + this.formataDa
       },
        err => console.log('Error occurred while getting date: ', err)
     );
+
+  }
+
+  selecionaHoraPasseio(){
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'time',
+      allowFutureDates:true,
+      allowOldDates:false,
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT,
+
+
+    }).then(
+      date =>{
+         this.roteiro.data = date.toISOString();
+      },
+       err => console.log('Error occurred while getting date: ', err)
+    );
+
+
 
   }
 

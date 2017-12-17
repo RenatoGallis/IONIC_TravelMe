@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/listaViagens/list';
@@ -11,6 +10,7 @@ import { ListaroutPage } from '../pages/listaPasseios/listarout';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DatePicker } from '@ionic-native/date-picker';
+import { Vibration } from '@ionic-native/vibration';
 /* LocalStorage */
 import { LocalStorageModule } from 'angular-2-local-storage';
 
@@ -47,6 +47,7 @@ import { LocalStorageModule } from 'angular-2-local-storage';
   providers: [
     StatusBar,
     SplashScreen,
+    Vibration,
     DatePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
