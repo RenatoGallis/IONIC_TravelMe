@@ -6,6 +6,7 @@ import { ListaroutPage } from '../listaPasseios/listarout';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { ListPage } from '../listaViagens/list';
 import { DatePicker } from '@ionic-native/date-picker';
+import { Vibration } from '@ionic-native/vibration';
 
 /**
  * Generated class for the AddroutPage page.
@@ -29,7 +30,7 @@ export class AddroutPage {
    public dia_fim;
    public mes_inicio;
    public mes_fim;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private localStorageService: LocalStorageService,private  datePicker:  DatePicker,private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private localStorageService: LocalStorageService,private  datePicker:  DatePicker,private alertCtrl: AlertController, private vibration: Vibration) {
 
     if(this.navParams.get('infoRoteiro')!= null){
       this.destino =  this.navParams.get('destinoSelecionado');
@@ -55,7 +56,9 @@ console.log("Data Inicio:" + this.formataDataIncio +"Data Fim:" + this.formataDa
   saverout(){
 
     if(!this.roteiro.local  || !this.roteiro.data || !this.roteiro.hora){
-    
+
+      this.vibration.vibrate(500);
+
   let alert = this.alertCtrl.create({
           title:'Aviso',
           message: "Por favor, preencha corretamente todos os campos",

@@ -40,7 +40,7 @@ if(this.navParams.get('infoDestino')!= null){
 
   if(!this.destino.nome  || !this.destino.data_inicio || !this.destino.data_final){
 
-  this.vibration.vibrate([2000,1000,2000]);
+  this.vibration.vibrate(500);
 
 let alert = this.alertCtrl.create({
         title:'Aviso',
@@ -52,9 +52,13 @@ let alert = this.alertCtrl.create({
 }
 
 if(this.destino.data_final < this.destino.data_inicio){
+
+
+  this.vibration.vibrate(500);
+
   let alert_data = this.alertCtrl.create({
           title:'Aviso',
-          message: "Data fim menor que a data inicio, isso é impossivel!!",
+          message: "Data fim menor que a data inicio, por favor corrija",
           buttons:[{text:'Ok'}]
         });
     alert_data.present();
