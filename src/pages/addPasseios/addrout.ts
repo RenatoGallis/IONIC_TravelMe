@@ -71,6 +71,7 @@ console.log("Data Inicio:" + this.formataDataIncio +"Data Fim:" + this.formataDa
 
 
 this.roteiros = [];
+
 this.roteiro.data = this.roteiro.data ;
 
 
